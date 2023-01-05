@@ -6,6 +6,7 @@ import { Notify } from 'notiflix';
 const DEBOUNCE_DELAY = 300;
 const input = document.querySelector('input#search-box');
 const countryList = document.querySelector('ul.country-list');
+const countryInfo = document.querySelector('div.country-info');
 
 Notify.init({
     width: '400px',
@@ -28,6 +29,7 @@ function onInputFullfill(e) {
 
 function createMarkup(countries) {
     countryList.innerHTML = '';
+    countryInfo.innerHTML = '';
 
     if (!input.value) {
         return countryList.innerHTML = '';
@@ -59,7 +61,7 @@ function createMarkup(countries) {
     if (countries.length >= 2 && countries.length < 10) {
         return countryList.insertAdjacentHTML('beforeend', shortCard);
     }
-        countryList.insertAdjacentHTML('beforeend', fullCard);
+        countryInfo.insertAdjacentHTML('beforeend', fullCard);
     })
 }
 
