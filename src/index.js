@@ -16,13 +16,13 @@ Notify.init({
 input.addEventListener('input', debounce(onInputFullfill, DEBOUNCE_DELAY));
 
 function onInputFullfill(e) {
-    const { value } = e.target;
+    const name = e.target.value.trim();
 
-    if (!value) {
+    if (!name) {
         return;
     };
 
-    fetchCountries(value.trim())
+    fetchCountries(name)
         .then(countries => createMarkup(countries))
         .catch(onErrorCatch);
 }
